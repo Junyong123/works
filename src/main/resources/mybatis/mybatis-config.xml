@@ -4,11 +4,12 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
   <!-- db연결 설정 -->
-  <properties resource="kr/or/ddit/db/mybatis/db.properties"/>
+  <properties resource="mybatis/db.properties"/>
   
   <!-- vo 별칭 부여 -->
   <typeAliases>
-  	<typeAlias alias="UserVO" type="works/src/main/java/model/UserVO"/>
+  	<typeAlias alias="UserVO" type="model.UserVO"/>
+  	<typeAlias alias="PageVO" type="model.PageVO"/>
   </typeAliases>
   
   <environments default="development">
@@ -25,6 +26,6 @@
   
   <!-- mapper 설정 -->
   <mappers>
-    <mapper resource="works/src/main/resources/mybatis/mapper/user.xml"/>
+    <mapper resource="mybatis/mapper/user.xml"/>
   </mappers>
 </configuration>
