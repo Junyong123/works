@@ -49,5 +49,11 @@ public class BoardDaoImpl implements IBoardDao{
 		List<BoardConVO> list = sqlSession.selectList("board.getAllBoardCon", str);
 		return list;
 	}
+
+	@Override
+	public int insetContent(SqlSession sqlSession, BoardConVO vo) {
+		int cnt = sqlSession.insert("board.insertContetn", vo);
+		return cnt;
+	}
 	
 }

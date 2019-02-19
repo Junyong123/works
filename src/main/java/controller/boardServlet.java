@@ -37,6 +37,11 @@ public class boardServlet extends HttpServlet {
 		session.setAttribute("bclist", bclist);
 		session.setAttribute("boardName", test);
 		
+		System.out.println(test);
+		System.out.println(bclist.size());
+//		System.out.println(bclist.get(0).getBoard_title());
+//		System.out.println(bclist.get(0).getBoard_con());
+		
 		request.getRequestDispatcher("boardPaging.jsp").forward(request, response);
 	}
 

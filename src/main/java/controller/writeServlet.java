@@ -39,6 +39,8 @@ public class writeServlet extends HttpServlet {
 		String file = request.getParameter("file");
 		
 		BoardConVO bvo = new BoardConVO();
+		bvo.setBoard_con(con);
+		bvo.setBoard_title(title);
 		
 		
 		HttpSession session = request.getSession();

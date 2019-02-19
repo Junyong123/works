@@ -46,12 +46,12 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${bcList }" var="board" varStatus="i">
+							<c:forEach items="${bclist }" var="board" varStatus="i">
 								<%-- 향상된 for문은 begin이 없어서 i값을 구할 수 없음으로 varStatus를 이용해서 구한다 --%>
 								<tr class='boardTr'>
 									<td>${i.index }</td>
-									<td>${board.title }</td>
-									<td>${board.user }</td>
+									<td>${board.board_title }</td>
+									<td>${board.board_user }</td>
 									<td><fmt:formatDate value="${board.board_day }" pattern="yyyy/MM/dd"/></td>
 								</tr>
 							</c:forEach>

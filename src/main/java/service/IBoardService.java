@@ -15,4 +15,6 @@ public interface IBoardService {
 	int updateBoard(BoardVO vo);
 	
 	List<BoardConVO> getAllBoardCon(String str);
+	
+	int insetContent(BoardConVO vo);
 }

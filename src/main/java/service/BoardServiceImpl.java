@@ -62,9 +62,20 @@ public class BoardServiceImpl implements IBoardService{
 		
 		List<BoardConVO> list = service.getAllBoardCon(sqlSession, str);
 		
-		sqlSession.commit();
 		sqlSession.close();
 		return list;
+	}
+
+	@Override
+	public int insetContent(BoardConVO vo) {
+		SqlSessionFactory sqlSessionFactory = MybatisSqlSessionFactory.getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		
+		int cnt = service.insetContent(sqlSession, vo);
+		
+		sqlSession.commit();
+		sqlSession.close();
+		return cnt;
 	}
 	
 }

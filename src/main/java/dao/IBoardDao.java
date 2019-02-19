@@ -15,4 +15,6 @@ public interface IBoardDao {
 	int updateBoard(SqlSession sqlSession,BoardVO vo);
 	
 	List<BoardConVO> getAllBoardCon(SqlSession sqlSession,String str);
+	
+	int insetContent(SqlSession sqlSession,BoardConVO vo);
 }

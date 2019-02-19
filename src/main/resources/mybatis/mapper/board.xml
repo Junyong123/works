@@ -28,7 +28,7 @@
   
   <insert id="insetContent" parameterType="BoardConVO">
   	insert into boardcon(board_connum, board_num, board_title, board_con, board_user, board_day)
-	values(BOARDCON_SEQ.nextval,'1','test','123123','brown',sysdate)
+	values(BOARDCON_SEQ.nextval, #{board_num}, #{board_title}, #{board_con}, #{board_user},sysdate)
   </insert>
   
 </mapper>
