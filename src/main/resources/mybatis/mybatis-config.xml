@@ -10,6 +10,10 @@
   <typeAliases>
   	<typeAlias alias="UserVO" type="model.UserVO"/>
   	<typeAlias alias="PageVO" type="model.PageVO"/>
+  	<typeAlias alias="BoardConVO" type="model.BoardConVO"/>
+  	<typeAlias alias="BoardVO" type="model.BoardVO"/>
+  	<typeAlias alias="CommentsVO" type="model.CommentsVO"/>
+  	<typeAlias alias="FileVO" type="model.FileVO"/>
   </typeAliases>
   
   <environments default="development">
@@ -27,5 +31,6 @@
   <!-- mapper 설정 -->
   <mappers>
     <mapper resource="mybatis/mapper/user.xml"/>
+    <mapper resource="mybatis/mapper/board.xml"/>
   </mappers>
 </configuration>

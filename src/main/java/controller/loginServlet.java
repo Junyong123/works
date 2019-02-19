@@ -18,7 +18,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import encrypt.kisa.sha256.KISA_SHA256;
+import model.BoardVO;
 import model.UserVO;
+import service.BoardServiceImpl;
+import service.IBoardService;
 import service.IUserService;
 import service.UserServiceImpl;
 
@@ -26,15 +29,17 @@ import service.UserServiceImpl;
 public class loginServlet extends HttpServlet {
 	
 	IUserService userser;
+	IBoardService service;
 	
 	@Override
 	public void init() throws ServletException {
 		userser = new UserServiceImpl();
+		service = new BoardServiceImpl();
 	}
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/login.jsp").forward(request, response);
 		
+		request.getRequestDispatcher("/login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -42,7 +47,6 @@ public class loginServlet extends HttpServlet {
 		String userId = request.getParameter("userId");
 		String password = request.getParameter("password");
 		String transpass = KISA_SHA256.encrypt(password);
-	
 		logger.debug("*******************");
 		logger.debug(userId);
 		logger.debug(password);
@@ -51,11 +55,14 @@ public class loginServlet extends HttpServlet {
 		
 		List<UserVO> uvolist = userser.getAllUser();
 		HttpSession session = request.getSession();
-		
+		List<BoardVO> blist = service.allboarlist();
+		session.setAttribute("blist", blist);
+
 		for(UserVO uvo : uvolist){
 			if(uvo.getUserId().equals(userId)){
 				if(uvo.getPass().equals(transpass)){
-					session.setAttribute("userId", userId);
+					session.setAttribute("uvo", uvo);
+					session.setMaxInactiveInterval(1800);
 					request.getRequestDispatcher("/main.jsp").forward(request, response);
 				}
 			}

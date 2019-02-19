@@ -1,12 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+    
+<ul class="nav nav-sidebar">
+	<li id="create" class="create"><a href="<%=request.getContextPath()%>/createBoard">게시판 생성</a></li>
+</ul>
 
-</body>
-</html>
+<ul class="nav nav-sidebar">
+	<c:forEach items="${sessionScope.blist}" var="blist">
+		<c:if test="${blist.board_use == '사용'}">
+			<li id="creates" class="creates"><a href="${pageContext.request.contextPath}/board?board_name=${blist.board_name }">${blist.board_name }</a></li>
+		</c:if>
+	</c:forEach>
+</ul>

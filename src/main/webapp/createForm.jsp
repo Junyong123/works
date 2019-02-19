@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,8 +32,18 @@
         	<%@ include file="/left.jsp" %> 
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h1 class="page-header">Dashboard</h1>
-          main.jsp 안녕하세요~
+        
+        
+          <form action="${pageContext.servletContext.contextPath }/write" method="post">
+			제목 <input type="text" id="title" name="title"><br><br>
+			내용
+			<textarea rows="30" cols="50" id="con" name="con">
+			</textarea><br><br>
+			첨부파일 <input type="file"><br><br>
+			<input type="submit" value="저장">
+		  </form>
+			
+			
         </div>
       </div>
     </div>
